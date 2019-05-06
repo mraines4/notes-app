@@ -33,6 +33,7 @@ export default class NotesDetail extends React.Component{
             <h2>{note.title}</h2> 
             {isEditing? <NotesEditor text={draftText} handleChange={this._changeDraftText} /> :draftText }
             <button onClick={this._toggleIsEditing}>Toggle</button>
+            <button onClick={this._saveDraft} >Save</button>
         </div>
         )
     }
@@ -40,6 +41,9 @@ export default class NotesDetail extends React.Component{
         this.setState({
             isEditing: !this.state.isEditing
         })
+    }
+    _saveDraft = () => {
+        this.props.handleSave(this.state.id, this.state.draftText)
     }
     _changeDraftText = (draftText) => {
         this.setState({

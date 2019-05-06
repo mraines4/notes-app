@@ -36,7 +36,7 @@ export default class NotesApp extends React.Component {
                     <NotesList handleSelection={this._selectNote} notes={this.state.notes} />
                 </div>
                 <div className={styles.detail}>
-                    <NotesDetail note={theNote}/>
+                    <NotesDetail note={theNote} handleSave={this._updateNote} />
                 </div>
             </div>
         )
@@ -59,5 +59,22 @@ export default class NotesApp extends React.Component {
                 return {...note};
             }
         });
+        this.setState({
+            notes: updatedNotes1
+        })
+
+        // const updatedNotes2 = this.state.notes.filter(note => {
+        //     return note.id !== idToUpdate;
+        // });
+        // const theNoteToUpdate = this.state.notes.find(note => note.id === idToUpdate);
+        // this.setState({
+        //     notes: [
+        //         ...updatedNotes2,
+        //         {
+        //             theNoteToUpdate,
+        //             text: newText
+        //         }
+        //     ]
+        // })
     }
 }
