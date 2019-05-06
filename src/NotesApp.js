@@ -29,13 +29,14 @@ export default class NotesApp extends React.Component {
     }
 
     render() {
+        const theNote = this.state.notes.find(note => this.state.selectedNote === note.id)
         return (
             <div className={styles.app}>
                 <div className={styles.list}>
                     <NotesList handleSelection={this._selectNote} notes={this.state.notes} />
                 </div>
                 <div className={styles.detail}>
-                    <NotesDetail />
+                    <NotesDetail note={theNote}/>
                 </div>
             </div>
         )
