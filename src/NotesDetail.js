@@ -11,7 +11,7 @@ export default class NotesDetail extends React.Component {
         super(props);
 
         this.state = {
-            isEditing: true
+            isEditing: false
         }
     }
     render() {
@@ -21,14 +21,15 @@ export default class NotesDetail extends React.Component {
             <div>
                 <h1>{note.title}</h1>
                 {isEditing ? <NotesEditor text={note.text} /> : <p>{note.text}</p>}
-                <button >Edit</button>
+                <br />
+                <button onClick={this._changeEdit}>Toggle</button>
             </div>
         )
     }
 
-    // _changeEdit = () => {
-    //     this.setState({
-    //         isEditing: !this.state.isEditing
-    //     })
-    // }
+    _changeEdit = () => {
+        this.setState({
+            isEditing: !this.state.isEditing
+        })
+    }
 }
